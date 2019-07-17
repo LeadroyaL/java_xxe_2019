@@ -29,7 +29,7 @@ public class LocalHttpServer {
             System.out.println("Receive Request Start");
             String requestMethod = httpExchange.getRequestMethod();
             if (requestMethod.equalsIgnoreCase("GET")) {
-                System.out.println(URLDecoder.decode(httpExchange.getRequestURI().getPath(), "UTF-8"));
+                System.out.println(URLDecoder.decode(httpExchange.getRequestURI().toString(), "UTF-8"));
                 String response = "";
                 httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.getBytes(StandardCharsets.UTF_8).length);
                 OutputStream responseBody = httpExchange.getResponseBody();
