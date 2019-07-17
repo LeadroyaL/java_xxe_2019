@@ -30,7 +30,6 @@ public class LocalFtpServer {
                         // FTP 的命令一般是 \r\n 作为一行的结束
                         remoteReader.useDelimiter("\r\n");
                         remoteSender.println("220 xxe-ftp-server");
-
                         while (true) {
                             String line = remoteReader.nextLine();
                             System.out.println("> " + line);
@@ -45,7 +44,9 @@ public class LocalFtpServer {
                             } else {
                                 if (line.startsWith(RETR)) {
                                     sb.append('/').append(line.replace("RETR ", ""));
-                                    sb.append('\n').append(remoteReader.nextLine());
+                                    client.setSoTimeout(3000);
+                                    String tail = remoteReader.nextLine();
+                                    sb.append('\n').append(tail);
                                     break;
                                 } else if (line.startsWith(JUNK1) || line.startsWith(JUNK2)) {
                                     // nothing
