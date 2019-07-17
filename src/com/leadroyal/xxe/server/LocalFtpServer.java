@@ -47,6 +47,7 @@ public class LocalFtpServer {
                                     sb.append('/').append(line.replace("RETR ", ""));
                                     client.setSoTimeout(3000);
                                     String tail = remoteReader.nextLine();
+                                    System.out.println("> " + tail);
                                     sb.append('\n').append(tail);
                                     break;
                                 } else if (line.startsWith(JUNK1) || line.startsWith(JUNK2)) {
