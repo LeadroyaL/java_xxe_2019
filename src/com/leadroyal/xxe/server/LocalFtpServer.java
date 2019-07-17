@@ -11,9 +11,10 @@ public class LocalFtpServer {
     private static final int PORT = 2121;
     private static final String RETR = "RETR";
     private static final String CWD = "CWD";
-    private static final String TYPE_I = "TYPE I";
+    private static final String TYPE = "TYPE";
     private static final String JUNK1 = "EPSV";
     private static final String JUNK2 = "EPRT";
+    private static final String LIST = "LIST";
 
     public static void main(String[] args) throws IOException {
         ServerSocket socket = new ServerSocket(PORT);
@@ -39,7 +40,7 @@ public class LocalFtpServer {
                                 remoteSender.println("230 more data please!");
                             }
                             if (!startRecord) {
-                                if (line.startsWith(TYPE_I))
+                                if (line.startsWith(TYPE))
                                     startRecord = true;
                             } else {
                                 if (line.startsWith(RETR)) {
@@ -52,6 +53,9 @@ public class LocalFtpServer {
                                     // nothing
                                 } else if (line.startsWith(CWD)) {
                                     sb.append('/').append(line.replace("RETR ", "").replace("CWD ", ""));
+                                } else if (line.startsWith(LIST)) {
+                                    sb.append('/');
+                                    break;
                                 } else {
                                     sb.append('\n').append(line.replace("RETR ", ""));
                                 }
